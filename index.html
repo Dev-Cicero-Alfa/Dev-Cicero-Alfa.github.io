@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cícero — Desenvolvedor Web</title>
+<meta name="description" content="Cícero, desenvolvedor web full-stack: criação, reformulação e otimização de sites para empresas.">
+<meta property="og:title" content="Cícero — Desenvolvedor Web">
+<meta property="og:description" content="Sites que geram contatos e orçamentos. Criação, reformulação e otimização.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2342AD73'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='16' font-weight='700' text-anchor='middle' fill='white'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f7f5;--surface:#ffffff;--text:#141414;--muted:#5b5f66;--border:#e4e4e0;
+  --accent:#42AD73;--accent-ink:#2f8a58;--accent-soft:rgba(66,173,115,.12);--blue:#004993;
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1112;--surface:#171a1c;--text:#eceeef;--muted:#9aa1a8;--border:#262a2d;
+  --accent:#4cc283;--accent-ink:#6fd69e;--accent-soft:rgba(76,194,131,.14);--blue:#5b9be0;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);}}
+:root[data-theme="dark"]{
+  --bg:#0f1112;--surface:#171a1c;--text:#eceeef;--muted:#9aa1a8;--border:#262a2d;
+  --accent:#4cc283;--accent-ink:#6fd69e;--accent-soft:rgba(76,194,131,.14);--blue:#5b9be0;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{font-weight:800;letter-spacing:-.02em;font-size:1.1rem;display:flex;align-items:center;gap:10px}
+.logo span{width:30px;height:30px;border-radius:8px;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:.95rem}
+.links{display:flex;gap:22px;align-items:center;font-size:.93rem;color:var(--muted)}
+.links a:hover{color:var(--text)}
+.theme{background:none;border:1px solid var(--border);color:var(--text);width:36px;height:36px;border-radius:10px;cursor:pointer;font-size:1rem}
+@media(max-width:720px){.links a.hide-m{display:none}}
+.hero{padding:96px 0 72px}
+.tag{display:inline-flex;gap:8px;align-items:center;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--accent-ink);background:var(--accent-soft);padding:6px 12px;border-radius:999px}
+.tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+h1{font-size:clamp(2.2rem,6vw,3.8rem);line-height:1.08;letter-spacing:-.035em;font-weight:800;margin:22px 0 20px;max-width:16ch}
+h1 em{font-style:normal;color:var(--accent)}
+.lead{font-size:clamp(1.05rem,2.2vw,1.2rem);color:var(--muted);max-width:58ch}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:12px;font-weight:600;font-size:.95rem;border:1px solid var(--border);background:var(--surface);transition:transform .15s,border-color .15s}
+.btn:hover{transform:translateY(-1px);border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+section{padding:72px 0;border-top:1px solid var(--border)}
+.eyebrow{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--accent-ink);text-transform:uppercase;letter-spacing:.08em}
+h2{font-size:clamp(1.6rem,3.5vw,2.2rem);letter-spacing:-.025em;margin:8px 0 12px;line-height:1.2}
+.sub{color:var(--muted);max-width:60ch;margin-bottom:36px}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+.card h3{font-size:1.15rem;letter-spacing:-.01em}
+.card p{color:var(--muted);font-size:.95rem;flex:1}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.badge{font-size:.72rem;font-weight:600;padding:3px 9px;border-radius:999px;border:1px solid var(--border);color:var(--muted)}
+.badge.live{color:var(--accent-ink);border-color:var(--accent);background:var(--accent-soft)}
+.stack{display:flex;flex-wrap:wrap;gap:6px}
+.stack span{font-family:"JetBrains Mono",monospace;font-size:.72rem;padding:4px 8px;border-radius:6px;background:var(--bg);border:1px solid var(--border)}
+.card-links{display:flex;gap:16px;font-size:.9rem;font-weight:600}
+.card-links a{color:var(--accent-ink)}
+.card-links a:hover{text-decoration:underline}
+.card.feature{grid-column:1/-1;border-color:color-mix(in srgb,var(--accent) 45%,var(--border))}
+.services{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.svc{padding:24px;border-radius:16px;background:var(--surface);border:1px solid var(--border)}
+.svc .n{font-family:"JetBrains Mono",monospace;color:var(--accent-ink);font-size:.85rem}
+.svc h3{margin:8px 0 6px;font-size:1.08rem}
+.svc p{color:var(--muted);font-size:.93rem}
+.skills{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.skill h3{font-size:.95rem;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{padding:6px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--border);font-size:.87rem}
+.contact{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:40px;text-align:center;box-shadow:var(--shadow)}
+.contact .cta{justify-content:center}
+footer{padding:32px 0;color:var(--muted);font-size:.85rem;text-align:center}
+</style>
+</head>
+<body>
+<header><div class="wrap"><nav>
+  <a class="logo" href="#"><span>C</span>Cícero</a>
+  <div class="links">
+    <a href="#projetos">Projetos</a>
+    <a class="hide-m" href="#servicos">Serviços</a>
+    <a class="hide-m" href="#tecnologias">Tecnologias</a>
+    <a href="#contato">Contato</a>
+    <button class="theme" id="theme" aria-label="Alternar tema">◐</button>
+  </div>
+</nav></div></header>
+
+<main class="wrap">
+  <div class="hero">
+    <span class="tag">Disponível para novos projetos</span>
+    <h1>Sites que trazem <em>clientes</em>, não só visitas.</h1>
+    <p class="lead">Sou o Cícero, desenvolvedor web full-stack. Crio, reformulo e otimizo sites para empresas de serviços — rápidos, bonitos no celular e pensados para gerar contatos e orçamentos. Também desenvolvo sistemas internos sob medida.</p>
+    <div class="cta">
+      <a class="btn primary" href="#projetos">Ver projetos →</a>
+      <a class="btn" href="#contato">Falar comigo</a>
+    </div>
+  </div>
+
+  <section id="projetos">
+    <div class="eyebrow">Portfólio</div>
+    <h2>Projetos</h2>
+    <p class="sub">Uma seleção de sites e sistemas que desenvolvi. Alguns são privados (código de cliente ou de empresa) — nesses, descrevo o que foi feito.</p>
+    <div class="grid">
+      <article class="card feature">
+        <div class="meta"><h3>Sistema-Alfa</h3><span class="badge">Privado · empresa</span></div>
+        <p>Plataforma interna da Alfa Leilões, usada no dia a dia da operação. Contribuo continuamente com novos módulos e melhorias — por exemplo, o módulo de petições com modelos de campos preenchíveis, identificação automática das tags e conferência antes de gerar o documento.</p>
+        <div class="stack"><span>React</span><span>NestJS</span><span>Prisma</span><span>MySQL</span><span>Redis</span><span>DigitalOcean</span></div>
+      </article>
+      <article class="card">
+        <div class="meta"><h3>Insca — Landing Page</h3><span class="badge live">No ar</span></div>
+        <p>Redesign da landing page do Instituto de Saúde Cognitiva Aplicada, em React de produção e publicada no GitHub Pages.</p>
+        <div class="stack"><span>React</span><span>Vite</span></div>
+        <div class="card-links"><a href="https://dev-cicero-alfa.github.io/insca-landing/" target="_blank" rel="noopener">Ver site ↗</a><a href="https://github.com/Dev-Cicero-Alfa/insca-landing" target="_blank" rel="noopener">Código</a></div>
+      </article>
+      <article class="card">
+        <div class="meta"><h3>Alfa Leilões — novo site</h3><span class="badge">Protótipo</span></div>
+        <p>Protótipo interativo do site reformulado da Alfa Leilões: nova navegação e visual moderno, focado em apresentar os leilões de forma clara.</p>
+        <div class="stack"><span>React</span><span>Vite</span></div>
+        <div class="card-links"><a href="https://github.com/Dev-Cicero-Alfa/modelo-site-alfa-novo" target="_blank" rel="noopener">Código</a></div>
+      </article>
+      <article class="card">
+        <div class="meta"><h3>Amapá Office</h3><span class="badge">Modelo</span></div>
+        <p>Modelo de site para um coworking 24h, leve e direto ao ponto, feito para converter visitantes em reservas.</p>
+        <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+        <div class="card-links"><a href="https://github.com/Dev-Cicero-Alfa/amapa-office" target="_blank" rel="noopener">Código</a></div>
+      </article>
+      <article class="card">
+        <div class="meta"><h3>Kodra</h3><span class="badge">Privado</span></div>
+        <p>Site institucional com um componente por seção, identidade visual própria e formulário de contato com envio por e-mail.</p>
+        <div class="stack"><span>Next.js 15</span><span>TypeScript</span><span>Tailwind</span></div>
+      </article>
+      <article class="card">
+        <div class="meta"><h3>Calculadora de Leilões</h3><span class="badge">Privado</span></div>
+        <p>Aplicação full-stack com login de usuários, cálculo de lances, propostas de compra, histórico e checklists de lotes.</p>
+        <div class="stack"><span>React</span><span>Tailwind</span><span>NestJS</span><span>Prisma</span><span>MySQL</span><span>Docker</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="servicos">
+    <div class="eyebrow">O que eu faço</div>
+    <h2>Serviços</h2>
+    <p class="sub">Para empresas que querem ser encontradas e receber mais contatos pela internet.</p>
+    <div class="services">
+      <div class="svc"><div class="n">01</div><h3>Criação de sites</h3><p>Sites institucionais e landing pages do zero, com foco em gerar orçamentos, ligações e mensagens no WhatsApp.</p></div>
+      <div class="svc"><div class="n">02</div><h3>Reformulação</h3><p>Site antigo, lento ou fora do ar? Redesenho com visual atual, textos claros e navegação simples.</p></div>
+      <div class="svc"><div class="n">03</div><h3>Otimização</h3><p>Velocidade, versão para celular e boas práticas de SEO para aparecer melhor no Google.</p></div>
+      <div class="svc"><div class="n">04</div><h3>Sistemas sob medida</h3><p>Painéis, automações e integrações com APIs para organizar a operação da empresa.</p></div>
+    </div>
+  </section>
+
+  <section id="tecnologias">
+    <div class="eyebrow">Stack</div>
+    <h2>Tecnologias</h2>
+    <p class="sub">Ferramentas que uso no dia a dia, do front ao servidor.</p>
+    <div class="skills">
+      <div class="skill"><h3>Front-end</h3><div class="chips"><span>React</span><span>Next.js</span><span>TypeScript</span><span>JavaScript</span><span>Vite</span><span>Tailwind CSS</span><span>HTML &amp; CSS</span></div></div>
+      <div class="skill"><h3>Back-end</h3><div class="chips"><span>Node.js</span><span>NestJS</span><span>Prisma</span><span>MySQL</span><span>Redis</span><span>APIs REST</span></div></div>
+      <div class="skill"><h3>Infra &amp; deploy</h3><div class="chips"><span>DigitalOcean</span><span>Easypanel</span><span>Docker</span><span>GitHub Pages</span><span>Git &amp; GitHub</span></div></div>
+    </div>
+  </section>
+
+  <section id="contato">
+    <div class="contact">
+      <div class="eyebrow">Contato</div>
+      <h2>Vamos tirar seu site do papel?</h2>
+      <p class="sub" style="margin:0 auto 8px">Conte o que sua empresa precisa e eu te mostro uma ideia.</p>
+      <div class="cta">
+        <!-- CONTATOS: descomente e preencha
+        <a class="btn primary" href="https://wa.me/55DDDNUMERO" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn" href="https://www.linkedin.com/in/SEU-PERFIL" target="_blank" rel="noopener">LinkedIn</a>
+        -->
+        <a class="btn primary" href="https://github.com/Dev-Cicero-Alfa" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>© <span id="y"></span> Cícero · Desenvolvimento web</footer>
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+const root=document.documentElement,btn=document.getElementById('theme');
+try{const s=localStorage.getItem('theme');if(s)root.dataset.theme=s}catch(e){}
+btn.onclick=()=>{const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+root.dataset.theme=dark?'light':'dark';try{localStorage.setItem('theme',root.dataset.theme)}catch(e){}};
+</script>
+</body>
+</html>
